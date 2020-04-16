@@ -46,8 +46,8 @@ class GradleCiJobBuilder {
             }
             steps {
 		shell("""source ~/.bash_profile
-cd /local/apps/t3app/deployment
-./t3_package_script.sh""")
+cd /local/apps/abcd
+./abc.sh""")
 	}
 	configure {
 		it / 'properties' / 'jenkins.model.BuildDiscarderProperty' {
