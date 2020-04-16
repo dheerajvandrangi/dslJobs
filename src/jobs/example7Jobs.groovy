@@ -8,15 +8,7 @@ folder(basePath) {
 }
 
 new GradleCiJobBuilder()
-    .name("$basePath/gradle-project1")
+    .name("T3-DEV-Build")
     .description('An example using a job builder for a Gradle project.')
-    .ownerAndProject('myorg/project1')
-    .emails(developers)
-    .build(this)
-
-new GradleCiJobBuilder()
-    .name("$basePath/gradle-project2")
-    .description('Another example using a job builder for a Gradle project.')
-    .ownerAndProject('myorg/project2')
     .emails(developers)
     .build(this)
