@@ -11,6 +11,16 @@ import javaposse.jobdsl.dsl.Job
 @Builder(builderStrategy = SimpleStrategy, prefix = '')
 class GradleCiJobBuilder {
 
+	def devParamSVN = 'ok1'
+	def devParamCondtionNo = 'o'
+	def devParamCondtionYes = 'p'
+	def devParamDBOption = 'bNo'
+	def devParamGeneric = 'n'
+	def param1svn = 'sss'
+	def param2db = 'ss'
+	def param3tag = 'bb'
+	def param4prevtag = 'asddc'
+	def param5dbobj = 'sds'
     String name
     String description
     String ownerAndProject
@@ -32,9 +42,18 @@ class GradleCiJobBuilder {
 // 	         scm {
 //                github this.ownerAndProject, gitBranch
  //          }
-            triggers {
-                scm pollScmSchedule
-            }
+            parameters {
+		stringParam(param1svn, devParamSVN, "")
+		stringParam(param2db, devParamCondtionNo, "")
+		stringParam(param3tag, devParamCondtionNo, "")
+		stringParam(param4prevtag, devParamCondtionNo, "")
+		stringParam(param5dbobj, devParamDBOption, "")
+		wHideParameterDefinition {
+      name('generic')
+      defaultValue(devParamGeneric)
+      description('Generic')
+	  }
+	}
             wrappers {
         maskPasswords()
     }
