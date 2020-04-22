@@ -48,11 +48,6 @@ class GradleCiJobBuilder {
 		stringParam(param3tag, devParamCondtionNo, "")
 		stringParam(param4prevtag, devParamCondtionNo, "")
 		stringParam(param5dbobj, devParamDBOption, "")
-		wHideParameterDefinition {
-      name('generic')
-      defaultValue(devParamGeneric)
-      description('Generic')
-	  }
 	}
             wrappers {
         maskPasswords()
