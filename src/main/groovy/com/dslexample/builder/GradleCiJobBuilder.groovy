@@ -63,7 +63,7 @@ class GradleCiJobBuilder {
             steps {
 		shell('''source ~/.bash_profile
 cd /local/apps/abcd
-./\$script''')
+./${script}''')
 	}
 	configure {
 		it / 'properties' / 'jenkins.model.BuildDiscarderProperty' {
