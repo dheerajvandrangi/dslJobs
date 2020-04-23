@@ -21,6 +21,7 @@ class GradleCiJobBuilder {
 	def param3tag = 'bb'
 	def param4prevtag = 'asddc'
 	def param5dbobj = 'sds'
+	def devEmail
     String name
     String description
     String ownerAndProject
@@ -36,9 +37,9 @@ class GradleCiJobBuilder {
     Job build(DslFactory dslFactory) {
         dslFactory.job(name) {
             it.description this.description
-            logRotator {
-                numToKeep 5
-            }
+//            logRotator {
+//                numToKeep 5
+//            }
 // 	         scm {
 //                github this.ownerAndProject, gitBranch
  //          }
@@ -73,14 +74,52 @@ cd /local/apps/abcd
 			}
 		}
 	}
-            publishers {
-                archiveArtifacts artifacts
-                archiveJunit junitResults
-                if (emails) {
-                    mailer emails.join(' ')
-                }
-                
-            }
+            	publishers {
+		textFinder(/No such file or directory | TCP connection reset by peer/, '', true, false, true)
+		mailer(devEmail, false, false)
+		extendedEmail {
+			recipientList(devEmail)
+			triggers {
+				always {
+					recipientList(devEmail)
+					subject("\$PROJECT_DEFAULT_SUBJECT")
+					content("\$PROJECT_DEFAULT_CONTENT")
+					attachmentPatterns()
+					attachBuildLog(false)
+					compressBuildLog(false)
+					contentType("text/html")
+				}
+				beforeBuild {
+					recipientList(devEmail)
+					subject("JENKINS | T3 | AWS_DEVOPS DEV | Build | Start")
+					content("This is to notify that Dev Build has been started.")
+					attachmentPatterns()
+					attachBuildLog(false)
+					compressBuildLog(false)
+					contentType("text/html")
+			}
+				notBuilt {
+				recipientList(devEmail)
+					subject("\$PROJECT_DEFAULT_SUBJECT")
+					content("There seems to be an issue with Artifactory/Compilation-error. We are working on this and will send you an update once it is resolved.")
+					attachmentPatterns()
+					attachBuildLog(false)
+					compressBuildLog(false)
+					contentType("text/html")
+			}			
+			}
+			contentType("text/html")
+			defaultSubject("Build Status of | \$JOB_NAME")
+			defaultContent("\$DEFAULT_CONTENT")
+			attachmentPatterns()
+			preSendScript("\$DEFAULT_PRESEND_SCRIPT")
+			attachBuildLog(false)
+			compressBuildLog(false)
+			replyToList(replyList)
+			saveToWorkspace(false)
+			disabled(false)
+		}
+	}
         }
     }
 }
