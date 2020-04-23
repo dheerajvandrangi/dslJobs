@@ -22,7 +22,7 @@ class GradleCiJobBuilder {
 	def param4prevtag = 'asddc'
 	def param5dbobj = 'sds'
 	def devEmail
-	def script = 'abc.sh'
+	def tScript = 'abc.sh'
     String name
     String description
     String ownerAndProject
@@ -61,9 +61,9 @@ class GradleCiJobBuilder {
                 gradle tasks, switches, useWrapper
             }
             steps {
-		shell('''source ~/.bash_profile
+		shell("""source ~/.bash_profile
 cd /local/apps/abcd
-./${script}''')
+./${tScript}""")
 	}
 	configure {
 		it / 'properties' / 'jenkins.model.BuildDiscarderProperty' {
