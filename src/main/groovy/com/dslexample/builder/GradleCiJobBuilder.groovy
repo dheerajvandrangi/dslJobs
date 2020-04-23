@@ -115,7 +115,6 @@ cd /local/apps/abcd
 			preSendScript("\$DEFAULT_PRESEND_SCRIPT")
 			attachBuildLog(false)
 			compressBuildLog(false)
-			replyToList(replyList)
 			saveToWorkspace(false)
 			disabled(false)
 		}
