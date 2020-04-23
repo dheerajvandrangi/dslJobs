@@ -11,7 +11,7 @@ import javaposse.jobdsl.dsl.Job
 @Builder(builderStrategy = SimpleStrategy, prefix = '')
 class GradleCiJobBuilder {
 
-	def devParamSVN = 'ok1'
+	def devParamSVN
 	def devParamCondtionNo = 'o'
 	def devParamCondtionYes = 'p'
 	def devParamDBOption = 'bNo'
