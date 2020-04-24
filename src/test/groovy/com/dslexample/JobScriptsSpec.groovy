@@ -15,13 +15,13 @@ import org.jvnet.hudson.test.JenkinsRule
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
-
+*/
 /**
  * Tests that all dsl scripts in the jobs directory will compile. All config.xml's are written to build/debug-xml.
  *
  * This runs against the jenkins test harness. Plugins providing auto-generated DSL must be added to the build dependencies.
  */
-class JobScriptsSpec extends Specification {
+/*class JobScriptsSpec extends Specification {
 
     @Shared
     @ClassRule
@@ -49,11 +49,11 @@ class JobScriptsSpec extends Specification {
         where:
         file << TestUtil.getJobFiles()
     }
-
+*/
     /**
      * Write the config.xml for each generated job and view to the build dir.
      */
-    private void writeItems(GeneratedItems items, File outputDir) {
+ /*   private void writeItems(GeneratedItems items, File outputDir) {
         Jenkins jenkins = jenkinsRule.jenkins
         items.jobs.each { GeneratedJob generatedJob ->
             String jobName = generatedJob.jobName
