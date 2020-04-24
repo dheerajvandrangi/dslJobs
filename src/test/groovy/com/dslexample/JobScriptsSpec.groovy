@@ -1,4 +1,4 @@
-package com.dslexample
+/*package com.dslexample
 
 import com.dslexample.support.TestUtil
 import hudson.model.Item
@@ -69,4 +69,4 @@ class JobScriptsSpec extends Specification {
             TestUtil.writeFile(new File(outputDir, 'views'), viewName, text)
         }
     }
-}
+}*/
